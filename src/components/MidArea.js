@@ -9,7 +9,7 @@ export default function MidArea({ midAreaBlocks }) {
         <div
           {...provided.droppableProps}
           ref={provided.innerRef}
-          className="flex-1 h-full overflow-auto"
+          className="overflow-auto w-60 flex-none h-full overflow-y-auto flex flex-col items-start"
         >
           {midAreaBlocks.map((blockInfo, index) => (
             <ActionBlock
