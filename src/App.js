@@ -60,6 +60,7 @@ export default function App() {
   const [midAreaBlocks, setMidAreaBlocks] = useState([]);
 
   const onDragEnd = (result) => {
+    console.log("*****", result);
     if (!result.destination) {
       return;
     }
@@ -67,7 +68,7 @@ export default function App() {
     const sourceIndex = result.source.index;
     const destinationIndex = result.destination.index;
 
-    if (result.source.droppableId === "sidebar") {
+    if (result.source.droppableId === "sidebar" && result.destination.droppableId === "mid-area") {
       const draggedBlock = actionBlocks[sourceIndex];
 
       // Add the dragged block to the mid area
