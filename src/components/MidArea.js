@@ -13,7 +13,7 @@ export default function MidArea({ midAreaBlocks }) {
         >
           {midAreaBlocks.map((blockInfo, index) => (
             <ActionBlock
-              key={blockInfo.blockName}
+              key={blockInfo.blockid}
               blockInfo={blockInfo}
               index={index}
             />

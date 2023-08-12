@@ -60,7 +60,6 @@ export default function App() {
   const [midAreaBlocks, setMidAreaBlocks] = useState([]);
 
   const onDragEnd = (result) => {
-    console.log("*****", result);
     if (!result.destination) {
       return;
     }
@@ -70,10 +69,14 @@ export default function App() {
 
     if (result.source.droppableId === "sidebar" && result.destination.droppableId === "mid-area") {
       const draggedBlock = actionBlocks[sourceIndex];
-
+      const newBlockId = `${draggedBlock.blockid}_${Date.now()}`;
+      const newBlock = {
+        ...draggedBlock,
+        blockid: newBlockId,
+      };
       // Add the dragged block to the mid area
       const updatedMidAreaBlocks = [...midAreaBlocks];
-      updatedMidAreaBlocks.splice(destinationIndex, 0, draggedBlock);
+      updatedMidAreaBlocks.splice(destinationIndex, 0, newBlock);
       setMidAreaBlocks(updatedMidAreaBlocks);
     }
   };
