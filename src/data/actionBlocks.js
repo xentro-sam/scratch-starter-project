@@ -25,7 +25,7 @@ const actionBlocksData = [
   {
     blockName: "Move 10 steps",
     blockColor: "bg-blue-500",
-    blockAction: () => {},
+    blockAction: "moveAheadBy10Steps",
     blockid: "move_10_steps",
     blockType: "motion",
   },
