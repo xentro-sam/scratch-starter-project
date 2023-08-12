@@ -66,12 +66,15 @@ export default function App() {
 
     const sourceIndex = result.source.index;
     const destinationIndex = result.destination.index;
-    const draggedBlock = actionBlocks[sourceIndex];
 
-    // Add the dragged block to the mid area
-    const updatedMidAreaBlocks = [...midAreaBlocks];
-    updatedMidAreaBlocks.splice(destinationIndex, 0, draggedBlock);
-    setMidAreaBlocks(updatedMidAreaBlocks);
+    if (result.source.droppableId === "sidebar") {
+      const draggedBlock = actionBlocks[sourceIndex];
+
+      // Add the dragged block to the mid area
+      const updatedMidAreaBlocks = [...midAreaBlocks];
+      updatedMidAreaBlocks.splice(destinationIndex, 0, draggedBlock);
+      setMidAreaBlocks(updatedMidAreaBlocks);
+    }
   };
 
   return (
