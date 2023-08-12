@@ -17,6 +17,12 @@ export default function ActionBlock({ blockInfo, index }) {
         ...catPosition,
         rotation: catPosition.rotation - 15,
       });
+    },
+    "turn15DegreesClockwise": () => {
+      setCatPosition({
+        ...catPosition,
+        rotation: catPosition.rotation + 15,
+      });
     }
   }
   return (
