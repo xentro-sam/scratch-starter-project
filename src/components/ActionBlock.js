@@ -23,6 +23,18 @@ export default function ActionBlock({ blockInfo, index }) {
         ...catPosition,
         rotation: catPosition.rotation + 15,
       });
+    },
+    "hide": () => {
+      setCatPosition({
+        ...catPosition,
+        hidden: true,
+      });
+    },
+    "show": () => {
+      setCatPosition({
+        ...catPosition,
+        hidden: false,
+      });
     }
   }
   return (

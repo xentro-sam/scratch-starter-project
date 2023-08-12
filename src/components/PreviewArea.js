@@ -33,7 +33,11 @@ export default function PreviewArea() {
     x = Math.max(0, Math.min(maxX, x));
     y = Math.max(0, Math.min(maxY, y));
 
-    setCatPosition({ x, y });
+    setCatPosition({
+      ...catPosition,
+      x,
+      y,
+    });
   };
 
   const handleMouseUp = () => {
@@ -56,6 +60,7 @@ export default function PreviewArea() {
         style={{
           transform: `translate(${catPosition.x}px, ${catPosition.y}px) rotate(${catPosition.rotation}deg)`,
           cursor: isDragging ? "grabbing" : "grab",
+          opacity: catPosition.hidden ? 0 : 1,
         }}
         onMouseDown={handleMouseDown}
         ref={catSpriteRef}

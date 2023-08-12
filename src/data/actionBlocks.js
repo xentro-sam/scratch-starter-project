@@ -58,14 +58,14 @@ const actionBlocksData = [
   {
     blockName: "Show",
     blockColor: "bg-purple-500",
-    blockAction: () => {},
+    blockAction: "show",
     blockid: "show",
     blockType: "looks",
   },
   {
     blockName: "Hide",
     blockColor: "bg-purple-500",
-    blockAction: () => {},
+    blockAction: "hide",
     blockid: "hide",
     blockType: "looks",
   },
