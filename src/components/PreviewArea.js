@@ -54,7 +54,7 @@ export default function PreviewArea() {
       <div
         className="absolute"
         style={{
-          transform: `translate(${catPosition.x}px, ${catPosition.y}px)`,
+          transform: `translate(${catPosition.x}px, ${catPosition.y}px) rotate(${catPosition.rotation}deg)`,
           cursor: isDragging ? "grabbing" : "grab",
         }}
         onMouseDown={handleMouseDown}

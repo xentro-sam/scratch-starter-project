@@ -38,7 +38,7 @@ const actionBlocksData = [
       </>
     ),
     blockColor: "bg-blue-500",
-    blockAction: () => {},
+    blockAction: "turn15DegreesAntiClockwise",
     blockid: "turn_15_degrees_undo",
     blockType: "motion",
   },

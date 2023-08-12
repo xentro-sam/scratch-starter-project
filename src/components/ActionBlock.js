@@ -7,7 +7,16 @@ export default function ActionBlock({ blockInfo, index }) {
 
   const onClickActions = {
     "moveAheadBy10Steps": () => {
-      setCatPosition({ x: catPosition.x + 10, y: catPosition.y });
+      setCatPosition({
+        ...catPosition,
+        x: catPosition.x + 10,
+      });
+    },
+    "turn15DegreesAntiClockwise": () => {
+      setCatPosition({
+        ...catPosition,
+        rotation: catPosition.rotation - 15,
+      });
     }
   }
   return (
