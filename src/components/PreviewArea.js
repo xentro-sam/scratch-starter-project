@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import CatSprite from "./CatSprite";
 
 export default function PreviewArea() {
+  const previewAreaRef = React.useRef(null);
+  const catSpriteRef = React.useRef(null);
+
   const [catPosition, setCatPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
@@ -15,8 +18,20 @@ export default function PreviewArea() {
 
   const handleMouseMove = (event) => {
     if (!isDragging) return;
-    const x = event.clientX - offset.x;
-    const y = event.clientY - offset.y;
+
+    const containerRect = previewAreaRef.current.getBoundingClientRect();
+    const spriteRect = catSpriteRef.current.getBoundingClientRect();
+
+    const maxX = containerRect.width - spriteRect.width;
+    const maxY = containerRect.height - spriteRect.height;
+
+    let x = event.clientX - offset.x;
+    let y = event.clientY - offset.y;
+
+    // Restrict x and y within the bounds of the container
+    x = Math.max(0, Math.min(maxX, x));
+    y = Math.max(0, Math.min(maxY, y));
+
     setCatPosition({ x, y });
   };
 
@@ -27,6 +42,7 @@ export default function PreviewArea() {
   return (
     <div
       className="w-full p-2"
+      ref={previewAreaRef}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
@@ -37,6 +53,7 @@ export default function PreviewArea() {
           cursor: isDragging ? "grabbing" : "grab",
         }}
         onMouseDown={handleMouseDown}
+        ref={catSpriteRef}
       >
         <CatSprite />
       </div>
