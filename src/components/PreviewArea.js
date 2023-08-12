@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CatSprite from "./CatSprite";
+import Icon from "./Icon";
 
 export default function PreviewArea() {
   const previewAreaRef = React.useRef(null);
@@ -46,6 +47,10 @@ export default function PreviewArea() {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
+      <div className="relative w-full bg-gray-200 p-1 mb-1">
+        <Icon name="flag" size={30} className="text-green-600 mx-2" />
+      </div>
+
       <div
         className="absolute"
         style={{
