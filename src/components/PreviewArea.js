@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import CatSprite from "./CatSprite";
 import Icon from "./Icon";
+import { ActionContext } from "../contexts/actionContexts";
 
 export default function PreviewArea() {
   const previewAreaRef = React.useRef(null);
   const catSpriteRef = React.useRef(null);
-
-  const [catPosition, setCatPosition] = useState({ x: 0, y: 0 });
+  const { catPosition, setCatPosition } = React.useContext(ActionContext);
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
