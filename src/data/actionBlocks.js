@@ -70,10 +70,10 @@ const actionBlocksData = [
     blockType: "looks",
   },
   {
-    blockName: "Wait 1 seconds",
+    blockName: "Wait 2 seconds",
     blockColor: "bg-red-500",
-    blockAction: "wait1Seconds",
-    blockid: "wait_1_seconds",
+    blockAction: "wait2Seconds",
+    blockid: "wait_2_seconds",
     blockType: "control",
   },
   {

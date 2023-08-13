@@ -60,7 +60,11 @@ export default function ActionBlock({
 
   const handleClick = (event) => {
     const fn = onClickActions[blockInfo.blockAction];
-    if (blockInfo.blockAction === "whenThisSpriteClicked") {
+    if (
+      blockInfo.blockAction === "whenThisSpriteClicked" ||
+      blockInfo.blockAction === "whenClicked" ||
+      blockInfo.blockAction === "repeat10Times"
+    ) {
       fn(divId);
     } else {
       fn();
