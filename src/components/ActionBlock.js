@@ -15,7 +15,8 @@ export default function ActionBlock({
   const [isDragging, setIsDragging] = React.useState(false);
   const [offset, setOffset] = React.useState({ x: 0, y: 0 });
 
-  const { catPosition, setCatPosition } = React.useContext(ActionContext);
+  const { onClickActions } = React.useContext(ActionContext);
+  
   const actionBlockRef = React.useRef(null);
 
   const handleMouseDown = (event) => {
@@ -53,39 +54,6 @@ export default function ActionBlock({
   const handleMouseUp = () => {
     if (!inMidArea) return;
     setIsDragging(false);
-  };
-
-  const onClickActions = {
-    moveAheadBy10Steps: () => {
-      setCatPosition({
-        ...catPosition,
-        x: catPosition.x + 10,
-      });
-    },
-    turn15DegreesAntiClockwise: () => {
-      setCatPosition({
-        ...catPosition,
-        rotation: catPosition.rotation - 15,
-      });
-    },
-    turn15DegreesClockwise: () => {
-      setCatPosition({
-        ...catPosition,
-        rotation: catPosition.rotation + 15,
-      });
-    },
-    hide: () => {
-      setCatPosition({
-        ...catPosition,
-        hidden: true,
-      });
-    },
-    show: () => {
-      setCatPosition({
-        ...catPosition,
-        hidden: false,
-      });
-    },
   };
 
   if (!inMidArea) {
