@@ -18,7 +18,6 @@ export default function ActionBlock({ blockInfo, index, midAreaRef, inMidArea })
     setIsDragging(true);
     const offsetX = event.clientX - actionBlockPosition.x;
     const offsetY = event.clientY - actionBlockPosition.y;
-    console.log(offsetX, offsetY, "offset");
     setOffset({ x: offsetX, y: offsetY });
   };
 
@@ -38,8 +37,6 @@ export default function ActionBlock({ blockInfo, index, midAreaRef, inMidArea })
     // Restrict x and y within the bounds of the container
     x = Math.max(0, Math.min(maxX, x));
     y = Math.max(0, Math.min(maxY, y));
-
-    console.log(x, y, "x,y");
 
     setActionBlockPosition({
       ...actionBlockPosition,
