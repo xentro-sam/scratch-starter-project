@@ -3,7 +3,7 @@ import * as React from "react";
 export const ActionContext = React.createContext();
 
 export const ActionContextProvider = ({ children }) => {
-  const [catPosition, setCatPosition] = React.useState({
+  const [spritePosition, setSpritePosition] = React.useState({
     x: 0,
     y: 0,
     rotation: 0,
@@ -12,41 +12,41 @@ export const ActionContextProvider = ({ children }) => {
 
   const onClickActions = {
     moveAheadBy10Steps: () => {
-      setCatPosition((prevCatPosition) => {
-        const newX = prevCatPosition.x + 10;
+      setSpritePosition((prevSpritePosition) => {
+        const newX = prevSpritePosition.x + 10;
         return {
-          ...prevCatPosition,
+          ...prevSpritePosition,
           x: newX,
         };
       });
     },
     turn15DegreesAntiClockwise: () => {
-      setCatPosition((prevCatPosition) => {
-        const newRotation = prevCatPosition.rotation - 15;
+      setSpritePosition((prevSpritePosition) => {
+        const newRotation = prevSpritePosition.rotation - 15;
         return {
-          ...prevCatPosition,
+          ...prevSpritePosition,
           rotation: newRotation,
         };
       });
     },
     turn15DegreesClockwise: () => {
-      setCatPosition((prevCatPosition) => {
-        const newRotation = prevCatPosition.rotation + 15;
+      setSpritePosition((prevSpritePosition) => {
+        const newRotation = prevSpritePosition.rotation + 15;
         return {
-          ...prevCatPosition,
+          ...prevSpritePosition,
           rotation: newRotation,
         };
       });
     },
     hide: () => {
-      setCatPosition({
-        ...catPosition,
+      setSpritePosition({
+        ...spritePosition,
         hidden: true,
       });
     },
     show: () => {
-      setCatPosition({
-        ...catPosition,
+      setSpritePosition({
+        ...spritePosition,
         hidden: false,
       });
     },
@@ -117,7 +117,7 @@ export const ActionContextProvider = ({ children }) => {
 
   return (
     <ActionContext.Provider
-      value={{ catPosition, setCatPosition, onClickActions }}
+      value={{ spritePosition, setSpritePosition, onClickActions }}
     >
       {children}
     </ActionContext.Provider>
