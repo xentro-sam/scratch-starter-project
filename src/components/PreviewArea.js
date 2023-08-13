@@ -7,7 +7,8 @@ import { ActionContext } from "../contexts/actionContexts";
 export default function PreviewArea() {
   const previewAreaRef = React.useRef(null);
   const spriteRef = React.useRef(null);
-  const { spritePosition, setSpritePosition } = React.useContext(ActionContext);
+  const { spritePosition, setSpritePosition, onClickActions } =
+    React.useContext(ActionContext);
   const [isDragging, setIsDragging] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [sprite, setSprite] = useState("cat");
@@ -50,6 +51,18 @@ export default function PreviewArea() {
     setSprite(event.target.value);
   };
 
+  const handleSpriteClick = () => {
+    const divElement = document.querySelector('[id*="whenThisSpriteClicked"]');
+    if (!divElement) return;
+    onClickActions.whenThisSpriteClicked(divElement.id);
+  };
+
+  const handleFlagClick = () => {
+    const divElement = document.querySelector('[id*="whenClicked"]');
+    if (!divElement) return;
+    onClickActions.whenClicked(divElement.id);
+  };
+
   return (
     <div
       className="w-full p-2"
@@ -58,7 +71,9 @@ export default function PreviewArea() {
       onMouseUp={handleMouseUp}
     >
       <div className="relative w-full bg-gray-200 p-1 mb-1 flex flex-wrap justify-between">
-        <Icon name="flag" size={30} className="text-green-600 mx-2" />
+        <div onClick={handleFlagClick}>
+          <Icon name="flag" size={30} className="text-green-600 mx-2" />
+        </div>
         <div className="flex">
           <div className="mx-2">Select Sprite</div>
           <select
@@ -81,6 +96,7 @@ export default function PreviewArea() {
         }}
         onMouseDown={handleMouseDown}
         ref={spriteRef}
+        onClick={handleSpriteClick}
       >
         {sprite === "cat" ? <CatSprite /> : <DogSprite />}
       </div>
