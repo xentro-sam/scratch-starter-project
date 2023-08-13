@@ -80,7 +80,7 @@ export default function ActionBlock({
             {...provided.dragHandleProps}
             ref={provided.innerRef}
             className={`flex flex-row flex-wrap text-white px-2 py-1 my-2 text-sm cursor-pointer ${blockInfo.blockColor}`}
-            onClick={onClickActions[blockInfo.blockAction]}
+            onClick={handleClick}
           >
             {blockInfo.blockName}
           </div>
