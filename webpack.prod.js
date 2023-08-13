@@ -3,6 +3,7 @@ const common = require("./webpack.common.js");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 process.env["NODE_ENV"] = "production";
 
@@ -21,6 +22,14 @@ module.exports = merge([
     plugins: [
       new HtmlWebpackPlugin({
         template: path.resolve('./index.html'),
+      }),
+      new CopyWebpackPlugin({ // Add the CopyWebpackPlugin
+        patterns: [
+          {
+            from: path.resolve(__dirname, 'public/icons'), // Source directory
+            to: path.resolve(__dirname, 'build/icons'), // Destination directory in the build folder
+          },
+        ],
       }),
     ],
     optimization: {
