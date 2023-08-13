@@ -11,14 +11,14 @@ const actionBlocksData = [
       </>
     ),
     blockColor: "bg-yellow-500",
-    blockAction: () => {},
+    blockAction: "whenClicked",
     blockid: "when_clicked",
     blockType: "event",
   },
   {
     blockName: "When this sprite clicked",
     blockColor: "bg-yellow-500",
-    blockAction: () => {},
+    blockAction: "whenThisSpriteClicked",
     blockid: "when_this_sprite_clicked",
     blockType: "event",
   },
@@ -72,14 +72,14 @@ const actionBlocksData = [
   {
     blockName: "Wait 1 seconds",
     blockColor: "bg-red-500",
-    blockAction: () => {},
+    blockAction: "wait1Seconds",
     blockid: "wait_1_seconds",
     blockType: "control",
   },
   {
     blockName: "Repeat 10 times",
     blockColor: "bg-red-500",
-    blockAction: () => {},
+    blockAction: "repeat10Times",
     blockid: "repeat_10_times",
     blockType: "control",
   },

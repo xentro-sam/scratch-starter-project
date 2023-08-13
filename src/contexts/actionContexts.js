@@ -36,6 +36,43 @@ export const ActionContextProvider = ({ children }) => {
         hidden: false,
       });
     },
+    whenThisSpriteClicked: (divId) => {
+      const divs = document.querySelectorAll(".action-block");
+      let currentIndex = 0;
+      for(let i = 0; i < divs.length; i++) {
+        if(divs[i].children[0].id === divId) {
+          currentIndex = i;
+          break;
+        }
+      }
+
+      while(currentIndex < divs.length) {
+        const currentDiv = divs[currentIndex];
+        let nextDiv = undefined;
+        for(let i = 0; i < divs.length; i++) {
+          if(i === currentIndex) continue;
+          const testDiv = divs[i];
+          const currentDivFloor = currentDiv.getBoundingClientRect().bottom;
+          const nextDivCeiling = testDiv.getBoundingClientRect().top;
+          console.log("currentDivFloor", currentDivFloor);
+          console.log("nextDivCeiling", nextDivCeiling);
+          if ((nextDivCeiling >= currentDivFloor) && (nextDivCeiling - currentDivFloor <= 3)) {
+            currentIndex = i;
+            nextDiv = testDiv;
+            console.log("nextDiv", nextDiv);
+            console.log("currentIndex", currentIndex);
+            break;
+          }
+        }
+        if(nextDiv === undefined) {
+          currentIndex = divs.length;
+        } else {
+          const action = nextDiv.children[0].id.split("_")[0];
+          const fn = onClickActions[action];
+          fn();
+        }
+      }
+    }
   };
 
   return (

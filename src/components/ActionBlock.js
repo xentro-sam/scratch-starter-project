@@ -16,7 +16,7 @@ export default function ActionBlock({
   const [offset, setOffset] = React.useState({ x: 0, y: 0 });
 
   const { onClickActions } = React.useContext(ActionContext);
-  
+
   const actionBlockRef = React.useRef(null);
 
   const handleMouseDown = (event) => {
@@ -56,6 +56,17 @@ export default function ActionBlock({
     setIsDragging(false);
   };
 
+  const divId = blockInfo.blockAction + "_" + Date.now();
+
+  const handleClick = (event) => {
+    const fn = onClickActions[blockInfo.blockAction];
+    if (blockInfo.blockAction === "whenThisSpriteClicked") {
+      fn(divId);
+    } else {
+      fn();
+    }
+  };
+
   if (!inMidArea) {
     return (
       <Draggable draggableId={blockInfo.blockid} index={index}>
@@ -76,7 +87,7 @@ export default function ActionBlock({
     return (
       <div onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
         <div
-          className="absolute"
+          className="action-block absolute"
           style={{
             transform: `translate(${actionBlockPosition.x}px, ${actionBlockPosition.y}px)`,
             cursor: isDragging ? "grabbing" : "grab",
@@ -85,8 +96,9 @@ export default function ActionBlock({
           ref={actionBlockRef}
         >
           <div
-            className={`flex flex-row flex-wrap text-white px-2 py-1 my-2 text-sm cursor-pointer ${blockInfo.blockColor}`}
-            onClick={onClickActions[blockInfo.blockAction]}
+            className={`flex flex-row flex-wrap text-white px-2 py-1 text-sm cursor-pointer ${blockInfo.blockColor}`}
+            onClick={handleClick}
+            id={divId}
           >
             {blockInfo.blockName}
           </div>
