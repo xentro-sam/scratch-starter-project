@@ -77,7 +77,10 @@ export const ActionContextProvider = ({ children }) => {
             break;
           }
         }
-        if (nextDiv === undefined) {
+        if (
+          nextDiv === undefined ||
+          nextDiv.children[0].id.split("_")[0] === "endRepeat"
+        ) {
           currentIndex = divs.length;
         } else {
           const nextDivId = nextDiv.children[0].id;
@@ -107,6 +110,7 @@ export const ActionContextProvider = ({ children }) => {
     whenClicked: (divId) => {
       onClickActions.whenThisSpriteClicked(divId);
     },
+    endRepeat: () => {},
   };
 
   return (

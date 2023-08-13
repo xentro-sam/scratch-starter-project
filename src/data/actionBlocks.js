@@ -83,6 +83,13 @@ const actionBlocksData = [
     blockid: "repeat_10_times",
     blockType: "control",
   },
+  {
+    blockName: "End Repeat",
+    blockColor: "bg-red-500",
+    blockAction: "endRepeat",
+    blockid: "end_repeat",
+    blockType: "control",
+  }
 ];
 
 export default actionBlocksData;
