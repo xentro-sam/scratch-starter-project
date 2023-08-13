@@ -30,8 +30,7 @@ export default function App() {
         blockid: newBlockId,
       };
       // Add the dragged block to the mid area
-      const updatedMidAreaBlocks = [...midAreaBlocks];
-      updatedMidAreaBlocks.splice(destinationIndex, 0, newBlock);
+      const updatedMidAreaBlocks = [...midAreaBlocks, newBlock];
       setMidAreaBlocks(updatedMidAreaBlocks);
     }
   };
