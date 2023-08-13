@@ -68,8 +68,11 @@ export const ActionContextProvider = ({ children }) => {
           const testDiv = divs[i];
           const currentDivFloor = currentDiv.getBoundingClientRect().bottom;
           const nextDivCeiling = testDiv.getBoundingClientRect().top;
+          const currentDivLeft = currentDiv.getBoundingClientRect().left;
+          const nextDivLeft = testDiv.getBoundingClientRect().left;
           if (
             nextDivCeiling >= currentDivFloor &&
+            nextDivLeft - currentDivLeft <= 3 &&
             nextDivCeiling - currentDivFloor <= 3
           ) {
             currentIndex = i;
